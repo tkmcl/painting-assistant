@@ -22,32 +22,25 @@ NUM_VERSIONS = 5
 # =============================================================================
 
 STYLE_FOUNDATION = """
-CRITICAL - PRESERVE THE REFERENCE EXACTLY:
-- Keep the EXACT pose, head angle, and composition from the reference photo
-- PRESERVE THE EXPRESSION - if mouth is open, keep it open. If eyes are wide, keep them wide.
-- The person must be RECOGNIZABLE - same face shape, same age, same expression, same emotion
-- This is a transformation of THIS SPECIFIC MOMENT, not a generic portrait
+TWO REQUIREMENTS - BOTH MUST BE MET:
 
-STYLE - BOLD, ROUGH, UNFINISHED:
-- Like a 3-minute charcoal sketch, not a finished painting
-- HUGE, CHUNKY brushstrokes - think house painter, not portrait artist
-- HIGH CONTRAST - push toward pure black and pure white
-- Features are SUGGESTED with single marks, never rendered
-- Leave areas UNFINISHED - raw canvas showing through
-- Every stroke should look urgent and confident, not careful
-- More like a woodcut or linocut than a painting
+1. LIKENESS (non-negotiable):
+- This must be recognizable as THIS EXACT PERSON
+- Same face shape, same expression, same pose
+- If mouth is open, it stays open. If hands are up, hands stay up.
+- Someone who knows them would recognize them instantly
 
-TEXTURE:
-- Visible brush drag marks
-- Dry brush texture
-- Strokes that don't quite connect
-- Rough edges where paint was applied quickly
+2. ROUGH PAINTING STYLE (non-negotiable):
+- Like a quick alla prima oil sketch - bold and unfinished
+- Big chunky strokes - think palette knife, not small brush
+- MONOCHROMATIC - grays only, maybe slight warm/cool temperature
+- Eyes are DARK SHAPES with a light accent - NO irises, NO pupils
+- Mouth is a VALUE SHAPE - no teeth, no lip definition
+- 50% of the image should look UNFINISHED
+- Visible canvas/paper texture through the paint
 
-THIS IS NOT:
-- A polished portrait
-- Smooth or blended anywhere
-- Carefully rendered
-- A photo filter effect
+DO NOT render details. Suggest everything with VALUE and SHAPE.
+The rougher and sketchier, the better - while keeping the likeness.
 """
 
 # =============================================================================
@@ -59,30 +52,25 @@ PROMPTS = {
         "name": "Block-in",
         "focus": "Composition and big value masses",
         "learning": "Seeing shapes, not features",
-        "prompt": """Convert this photo into an extremely rough, bold block-in study.
+        "prompt": """Convert this photo into a rough block-in painting study.
 
 {style_foundation}
 
 VERSION 1 - BLOCK-IN:
-- ONLY 3 values: BLACK, WHITE, and ONE gray
-- Massive, chunky brushstrokes
-- NO facial features - just big shapes of light and dark
-- Eyes are just dark shapes, no detail
-- Think: what you see if you blur the photo completely
-- Background and figure should merge - no clean edges anywhere
+- Simplify to 3-4 main values: darks, mid-tones, lights
+- Big, bold brushstrokes - not blended
+- Capture the GESTURE and EXPRESSION even if simplified
+- The specific face shape and pose must be preserved
+- Features are simplified shapes, but the likeness must be clear
 
-Keep the same pose and head angle as the photo.
-The person should be barely recognizable - just abstract masses that hint at a face.
+The person must be RECOGNIZABLE even in this simplified state.
+If they have a playful expression, it should read as playful.
+If hands are up near the face, show hands up near the face.
 
-ABSOLUTELY NO:
-- Eye details, pupils, irises
-- Teeth or lip definition
-- Hair strands
-- More than 3 values
-- Smooth blending
-- Anything that looks "finished"
+Keep rough and painterly - visible strokes, no smooth gradients.
+But prioritize LIKENESS over abstraction.
 """,
-        "version_notes": "v1.2 - Pushed for extreme simplification, 3 values only"
+        "version_notes": "v1.3 - Balance between rough style and likeness preservation"
     },
 
     2: {
@@ -116,29 +104,23 @@ ABSOLUTELY NO:
         "name": "Development",
         "focus": "Feature suggestion and subtle color",
         "learning": "Power of suggestion",
-        "prompt": """Develop the painting with suggested features while staying ROUGH.
+        "prompt": """Develop the painting - more presence, still rough.
 
 {style_foundation}
 
 VERSION 3 - DEVELOPMENT:
-- Features are SHAPES, not details
-- Eyes: just dark sockets with a hint of light - NO eyeballs, NO irises
-- Mouth: if open in reference, keep it as a DARK SHAPE - no teeth detail
-- Nose: ONE stroke for shadow, that's it
-- Add subtle warm/cool temperature shift
-- KEEP IT ROUGH - resist the urge to refine
+- The person is clearly recognizable now
+- But features are still SUGGESTED, not RENDERED
+- Eyes: dark socket shape + light shape = presence. NO IRIS.
+- Mouth: value shape that captures expression. NO TEETH.
+- Subtle temperature: warm highlights, cool shadows
+- STAY MONOCHROMATIC - grays with temperature, not color
 
-The expression must match the reference - playful stays playful, serious stays serious.
-Still looks like a quick study, not a finished painting.
-
-ABSOLUTELY NO:
-- Drawing the eyeballs
-- Rendering the mouth
-- Defining individual features
-- Smoothing or blending
-- Making it "prettier"
+RESIST THE URGE TO ADD DETAIL.
+The likeness comes from SHAPE and VALUE, not from rendering.
+Keep it looking like a 10-minute oil sketch.
 """,
-        "version_notes": "v1.2 - Stronger emphasis on keeping rough, preserving expression"
+        "version_notes": "v1.4 - Balance likeness and roughness"
     },
 
     4: {
@@ -172,29 +154,26 @@ ABSOLUTELY NO:
         "name": "Final",
         "focus": "Emotional presence, completion",
         "learning": "Knowing when to stop",
-        "prompt": """Final pass - capture the life while STAYING ROUGH.
+        "prompt": """Final version - the person must be unmistakably recognizable.
 
 {style_foundation}
 
 VERSION 5 - FINAL:
-- The expression must MATCH THE REFERENCE - same emotion, same energy
-- If they looked playful/surprised in the photo, they look playful/surprised now
-- Eyes: presence through VALUE, not detail - dark socket, light shape, DONE
-- This is STILL a rough study - it just has more presence
+- Someone who knows this person should instantly recognize them
+- The specific expression and emotion from the photo must be captured
+- The unique characteristics of their face must be clear
+- Keep the bold, painterly quality but ensure likeness
 
-DO NOT:
-- Add detail to make it "finished"
-- Smooth anything out
-- Make the eyes more realistic
-- Close an open mouth or change the expression
+This is the painting reference you will work from.
+It must capture:
+1. The exact person (likeness)
+2. The exact moment (expression, pose)
+3. The painterly style (rough, bold strokes)
 
-The magic is in what you DON'T paint.
-Keep 50% of this looking unfinished.
-This is a bold sketch that captures a moment, not a polished portrait.
-
-STOP BEFORE YOU THINK YOU'RE DONE.
+Priority order: LIKENESS > EXPRESSION > STYLE
+If you have to choose, preserve the person's identity above all.
 """,
-        "version_notes": "v1.2 - Stronger emphasis on staying rough and preserving expression"
+        "version_notes": "v1.3 - Likeness as top priority"
     },
 }
 
