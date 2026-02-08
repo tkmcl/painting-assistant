@@ -22,24 +22,32 @@ NUM_VERSIONS = 5
 # =============================================================================
 
 STYLE_FOUNDATION = """
-CRITICAL - PRESERVE IDENTITY:
-- The subject MUST be immediately recognizable as the same person in the reference photo
-- Key proportions: distance between eyes, nose length, face shape, chin - MUST match exactly
-- Even when abstract, the ESSENCE and LIKENESS of the person must be unmistakable
-- If someone knows this person, they should recognize them instantly
+CRITICAL - PRESERVE THE REFERENCE EXACTLY:
+- Keep the EXACT pose, head angle, and composition from the reference photo
+- PRESERVE THE EXPRESSION - if mouth is open, keep it open. If eyes are wide, keep them wide.
+- The person must be RECOGNIZABLE - same face shape, same age, same expression, same emotion
+- This is a transformation of THIS SPECIFIC MOMENT, not a generic portrait
 
-STYLE REFERENCE - Greek street artist INO:
-- VERY loose, broad, rough brushstrokes - NOT smooth or polished
-- Monochromatic gray palette with subtle temperature shifts
-- EXTREMELY atmospheric - figure emerges from/blends with background
-- Most edges COMPLETELY LOST - only 5-10% of edges are sharp
-- Economy of means - LESS is more, always err on the side of MORE ABSTRACTION
-- This should look like a ROUGH PAINTING, not a photograph with a filter
-- Think: bold, expressive, unfinished quality
+STYLE - BOLD, ROUGH, UNFINISHED:
+- Like a 3-minute charcoal sketch, not a finished painting
+- HUGE, CHUNKY brushstrokes - think house painter, not portrait artist
+- HIGH CONTRAST - push toward pure black and pure white
+- Features are SUGGESTED with single marks, never rendered
+- Leave areas UNFINISHED - raw canvas showing through
+- Every stroke should look urgent and confident, not careful
+- More like a woodcut or linocut than a painting
 
-EMOTIONAL DIRECTION:
-- Capture life, joy, presence (not INO's melancholy)
-- The subject should feel alive despite the abstraction
+TEXTURE:
+- Visible brush drag marks
+- Dry brush texture
+- Strokes that don't quite connect
+- Rough edges where paint was applied quickly
+
+THIS IS NOT:
+- A polished portrait
+- Smooth or blended anywhere
+- Carefully rendered
+- A photo filter effect
 """
 
 # =============================================================================
@@ -51,161 +59,142 @@ PROMPTS = {
         "name": "Block-in",
         "focus": "Composition and big value masses",
         "learning": "Seeing shapes, not features",
-        "prompt": """Transform this portrait into an extremely simplified block-in painting study.
+        "prompt": """Convert this photo into an extremely rough, bold block-in study.
 
 {style_foundation}
 
-VERSION 1 REQUIREMENTS - BLOCK-IN:
-- Use ONLY 3-4 distinct values: dark, mid-dark, mid-light, light
-- NO detail whatsoever - just large abstract value shapes
-- ALL edges must be soft and undefined
-- The face should be barely recognizable - just masses of light and shadow
-- Think: what you see when you squint until the photo is almost blurred out
-- Background should blend seamlessly into figure - no hard separation
-- Painterly texture - visible brushstrokes, not smooth gradients
+VERSION 1 - BLOCK-IN:
+- ONLY 3 values: BLACK, WHITE, and ONE gray
+- Massive, chunky brushstrokes
+- NO facial features - just big shapes of light and dark
+- Eyes are just dark shapes, no detail
+- Think: what you see if you blur the photo completely
+- Background and figure should merge - no clean edges anywhere
 
-DO NOT include:
-- Any recognizable features (no eyes, nose details, lip definition)
-- Sharp edges anywhere
-- More than 4 distinct values
-- Smooth, airbrushed transitions
+Keep the same pose and head angle as the photo.
+The person should be barely recognizable - just abstract masses that hint at a face.
 
-OUTPUT: A painterly value study that looks like the first 5 minutes of a portrait painting.
+ABSOLUTELY NO:
+- Eye details, pupils, irises
+- Teeth or lip definition
+- Hair strands
+- More than 3 values
+- Smooth blending
+- Anything that looks "finished"
 """,
-        "version_notes": "v1.0 - Initial prompt"
+        "version_notes": "v1.2 - Pushed for extreme simplification, 3 values only"
     },
 
     2: {
         "name": "Form & Edges",
         "focus": "3D structure and edge hierarchy",
         "learning": "Seeing form, creating focal point",
-        "prompt": """Transform this portrait showing 3D form with selective edge control.
+        "prompt": """Build on the block-in, adding form while staying bold and rough.
 
 {style_foundation}
 
-VERSION 2 REQUIREMENTS - FORM & EDGES:
-- Expand to 5-6 distinct values
-- Basic planes of the face become visible (forehead, cheek, jaw planes)
-- Introduce edge hierarchy: ONE area gets slightly sharper edges (near eye or nose bridge)
-- This sharp area = focal point, everything else stays soft or lost
-- The face should feel sculptural - forms emerging from atmosphere
-- Background edges dissolve - figure bleeds into ground
+VERSION 2 - FORM & EDGES:
+- Add 1-2 more gray values (now 4-5 total)
+- Show basic planes of the face (forehead, cheek, jaw)
+- ONE area can have slightly sharper edges (focal point)
+- Keep the bold, chunky brushwork from v1
+- Still very rough - this is NOT a finished painting
 
-PROGRESSION FROM V1:
-- Same composition and basic masses
-- Now adding 3D form through plane changes
-- Introducing selective sharpness for focal point
+Keep same pose and composition as the reference.
+Features still abstract - eyes as shapes, not detailed.
 
-DO NOT include:
-- Multiple competing sharp areas
-- Detailed eyes/nose/mouth
-- Sharp edges at head outline
-- Loss of atmospheric quality
-
-OUTPUT: A portrait with emerging 3D form and clear focal point hierarchy.
+ABSOLUTELY NO:
+- Smooth blending or gradients
+- Eye details (irises, pupils, catchlights)
+- Teeth, defined lips
+- Polished or finished look
 """,
-        "version_notes": "v1.0 - Combined form emergence + edge hierarchy from 10-version system"
+        "version_notes": "v1.1 - Simplified, maintains bold style"
     },
 
     3: {
         "name": "Development",
-        "focus": "Feature suggestion and color temperature",
-        "learning": "Power of suggestion, emotional color",
-        "prompt": """Transform this portrait with suggested features and subtle color temperature.
+        "focus": "Feature suggestion and subtle color",
+        "learning": "Power of suggestion",
+        "prompt": """Develop the painting with suggested features while staying ROUGH.
 
 {style_foundation}
 
-VERSION 3 REQUIREMENTS - DEVELOPMENT:
-- Features are SUGGESTED, not explicitly rendered
-- Eyes: hint of light/presence, but no iris/pupil detail
-- Nose: shadow shapes define it, not lines
-- Mouth: subtle value shift, not defined lips
-- One side more defined, other side lost in atmosphere
-- Introduce subtle color temperature: warm lights, cool shadows
-- Color should be FELT more than SEEN - still reads as monochromatic when squinting
+VERSION 3 - DEVELOPMENT:
+- Features are SHAPES, not details
+- Eyes: just dark sockets with a hint of light - NO eyeballs, NO irises
+- Mouth: if open in reference, keep it as a DARK SHAPE - no teeth detail
+- Nose: ONE stroke for shadow, that's it
+- Add subtle warm/cool temperature shift
+- KEEP IT ROUGH - resist the urge to refine
 
-PROGRESSION FROM V2:
-- Building on established form and edge hierarchy
-- Adding feature hints within focal area
-- Introducing emotional color temperature
+The expression must match the reference - playful stays playful, serious stays serious.
+Still looks like a quick study, not a finished painting.
 
-DO NOT include:
-- Fully rendered features with detail
-- Obvious color that jumps out
-- Both sides equally defined
-- Loss of atmospheric integration
-
-OUTPUT: A portrait where features are felt more than seen, with subtle color emotion.
+ABSOLUTELY NO:
+- Drawing the eyeballs
+- Rendering the mouth
+- Defining individual features
+- Smoothing or blending
+- Making it "prettier"
 """,
-        "version_notes": "v1.0 - Combined feature suggestion + color from 10-version system"
+        "version_notes": "v1.2 - Stronger emphasis on keeping rough, preserving expression"
     },
 
     4: {
         "name": "Atmosphere",
-        "focus": "Figure/ground integration, refinement",
-        "learning": "Lost edges, unified atmosphere",
-        "prompt": """Transform this portrait with complete atmospheric integration.
+        "focus": "Figure/ground integration",
+        "learning": "Lost edges",
+        "prompt": """Integrate figure and background while maintaining bold style.
 
 {style_foundation}
 
-VERSION 4 REQUIREMENTS - ATMOSPHERE:
-- Edges of hair/shoulders/clothing dissolve COMPLETELY into background
-- Figure appears to emerge from or sink into the atmosphere
-- Some areas of the face may also dissolve
-- Only the focal area maintains clear presence
-- Background is not separate - same atmospheric substance as figure
-- Focal point gets final refinement - may include subtle catchlights
-- Color temperature unifies figure and ground
+VERSION 4 - ATMOSPHERE:
+- Edges of hair/shoulders dissolve into background
+- Figure emerges from the gray atmosphere
+- Some facial edges can also dissolve
+- Only the focal area (eyes region) stays defined
+- Keep the rough, bold brushwork throughout
 
-PROGRESSION FROM V3:
-- Pushing lost edges much further
-- Creating signature "emerging from mist" quality
-- Refining focal point while losing periphery
+The painting should feel unified - figure and ground are one.
+But still recognizable as the same person.
 
-DO NOT include:
-- Clear outline of head/hair against background
-- Figure that feels "pasted on" background
-- Loss of focal point presence
-- Photorealistic detail even in focal area
-
-OUTPUT: A portrait where subject and atmosphere are inseparable.
+ABSOLUTELY NO:
+- Hard outline around the head
+- Figure that looks "pasted on" the background
+- Loss of the bold, rough quality
+- Photorealistic detail anywhere
 """,
-        "version_notes": "v1.0 - Combined atmospheric integration + focal refinement from 10-version system"
+        "version_notes": "v1.1 - Simplified, maintains bold integration"
     },
 
     5: {
         "name": "Final",
-        "focus": "Emotional resonance, completion",
-        "learning": "Art beyond technique, knowing when to stop",
-        "prompt": """Transform this portrait into a finished painting reference with emotional presence.
+        "focus": "Emotional presence, completion",
+        "learning": "Knowing when to stop",
+        "prompt": """Final pass - capture the life while STAYING ROUGH.
 
 {style_foundation}
 
-VERSION 5 REQUIREMENTS - FINAL:
-- Something in the expression should connect - joy, intensity, presence, LIFE
-- The gaze (if visible) should feel present and alive, not vacant
-- Check all technical elements: values, edges, atmosphere, color temperature
-- The finish should feel inevitable, not overworked
-- Economy: nothing extra, nothing missing
-- This is the version you will paint from
+VERSION 5 - FINAL:
+- The expression must MATCH THE REFERENCE - same emotion, same energy
+- If they looked playful/surprised in the photo, they look playful/surprised now
+- Eyes: presence through VALUE, not detail - dark socket, light shape, DONE
+- This is STILL a rough study - it just has more presence
 
-FINAL CHECKLIST:
-- Values reading correctly? (established in V1-2)
-- Edge hierarchy clear? (established in V2)
-- Features suggested not stated? (established in V3)
-- Figure integrated with atmosphere? (established in V4)
-- Does it connect emotionally? (this version)
-- Is it complete without being overworked?
+DO NOT:
+- Add detail to make it "finished"
+- Smooth anything out
+- Make the eyes more realistic
+- Close an open mouth or change the expression
 
-DO NOT include:
-- Empty or vacant expression
-- Overworked details that kill the life
-- Loss of any atmospheric quality
-- Anything that doesn't serve the whole
+The magic is in what you DON'T paint.
+Keep 50% of this looking unfinished.
+This is a bold sketch that captures a moment, not a polished portrait.
 
-OUTPUT: A finished painting reference - technically accomplished AND emotionally alive.
+STOP BEFORE YOU THINK YOU'RE DONE.
 """,
-        "version_notes": "v1.0 - Combined emotional resonance + final refinement from 10-version system"
+        "version_notes": "v1.2 - Stronger emphasis on staying rough and preserving expression"
     },
 }
 
