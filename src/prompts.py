@@ -49,131 +49,134 @@ The rougher and sketchier, the better - while keeping the likeness.
 
 PROMPTS = {
     1: {
-        "name": "Block-in",
-        "focus": "Composition and big value masses",
-        "learning": "Seeing shapes, not features",
-        "prompt": """Convert this photo into a rough block-in painting study.
+        "name": "Notan",
+        "focus": "2-value light/dark pattern",
+        "learning": "Seeing the big shape of light vs dark",
+        "prompt": """Create a 2-VALUE NOTAN study of this photo.
 
 {style_foundation}
 
-VERSION 1 - BLOCK-IN:
-- Simplify to 3-4 main values: darks, mid-tones, lights
-- Big, bold brushstrokes - not blended
-- Capture the GESTURE and EXPRESSION even if simplified
-- The specific face shape and pose must be preserved
-- Features are simplified shapes, but the likeness must be clear
+VERSION 1 - NOTAN (2 VALUES ONLY):
+This is NOT a painting - it's a value map.
 
-The person must be RECOGNIZABLE even in this simplified state.
-If they have a playful expression, it should read as playful.
-If hands are up near the face, show hands up near the face.
+RULES:
+- ONLY 2 VALUES: Black and White. Nothing else.
+- Every area must be either BLACK or WHITE
+- Squint at the photo - what reads as "light"? That's white.
+- Everything else is black.
+- The SHAPE of the light pattern is what matters
 
-Keep rough and painterly - visible strokes, no smooth gradients.
-But prioritize LIKENESS over abstraction.
+The silhouette and gesture must be recognizable.
+The face is just shapes - light shape for the lit side, dark for shadow.
+No features, no gradients, no in-between values.
+
+This helps you see: Where is the light? Where is the shadow?
 """,
-        "version_notes": "v1.3 - Balance between rough style and likeness preservation"
+        "version_notes": "v2.0 - True 2-value notan for learning light patterns"
     },
 
     2: {
-        "name": "Form & Edges",
-        "focus": "3D structure and edge hierarchy",
-        "learning": "Seeing form, creating focal point",
-        "prompt": """Build on the block-in, adding form while staying bold and rough.
+        "name": "3-Value",
+        "focus": "Adding a mid-tone",
+        "learning": "Seeing the halftone zone",
+        "prompt": """Create a 3-VALUE study of this photo.
 
 {style_foundation}
 
-VERSION 2 - FORM & EDGES:
-- Add 1-2 more gray values (now 4-5 total)
-- Show basic planes of the face (forehead, cheek, jaw)
-- ONE area can have slightly sharper edges (focal point)
-- Keep the bold, chunky brushwork from v1
-- Still very rough - this is NOT a finished painting
+VERSION 2 - THREE VALUES:
+- BLACK (darkest darks, core shadows)
+- GRAY (halftones, turning forms)
+- WHITE (direct light, highlights)
 
-Keep same pose and composition as the reference.
-Features still abstract - eyes as shapes, not detailed.
+Now you can show FORM - where light turns to shadow.
+The gray is the transition zone.
 
-ABSOLUTELY NO:
-- Smooth blending or gradients
-- Eye details (irises, pupils, catchlights)
-- Teeth, defined lips
-- Polished or finished look
+Still NO features - eyes are dark shapes, not drawn.
+The face is sculpted with these 3 values like a simple clay model.
+Keep it blocky and simple.
+
+This helps you see: How does the form turn from light to shadow?
 """,
-        "version_notes": "v1.1 - Simplified, maintains bold style"
+        "version_notes": "v2.0 - 3-value study for understanding form"
     },
 
     3: {
-        "name": "Development",
-        "focus": "Feature suggestion and subtle color",
-        "learning": "Power of suggestion",
-        "prompt": """Develop the painting - more presence, still rough.
+        "name": "5-Value",
+        "focus": "Full value range",
+        "learning": "Seeing subtle value shifts",
+        "prompt": """Create a 5-VALUE study of this photo.
 
 {style_foundation}
 
-VERSION 3 - DEVELOPMENT:
-- The person is clearly recognizable now
-- But features are still SUGGESTED, not RENDERED
-- Eyes: dark socket shape + light shape = presence. NO IRIS.
-- Mouth: value shape that captures expression. NO TEETH.
-- Subtle temperature: warm highlights, cool shadows
-- STAY MONOCHROMATIC - grays with temperature, not color
+VERSION 3 - FIVE VALUES:
+1. White (brightest lights)
+2. Light gray (lighter halftones)
+3. Mid gray (middle values)
+4. Dark gray (darker halftones)
+5. Black (darkest accents)
 
-RESIST THE URGE TO ADD DETAIL.
-The likeness comes from SHAPE and VALUE, not from rendering.
-Keep it looking like a 10-minute oil sketch.
+Now you have a full value range to work with.
+The face starts to have dimension and presence.
+Features are still SHAPES made of value - not drawn lines.
+
+Eyes: dark shape + light accent = presence (no iris detail)
+Mouth: value change suggests expression (no teeth)
+
+This helps you see: The full range of values that create dimension.
 """,
-        "version_notes": "v1.4 - Balance likeness and roughness"
+        "version_notes": "v2.0 - 5-value for full tonal range"
     },
 
     4: {
-        "name": "Atmosphere",
-        "focus": "Figure/ground integration",
-        "learning": "Lost edges",
-        "prompt": """Integrate figure and background while maintaining bold style.
+        "name": "Edges",
+        "focus": "Lost and found edges",
+        "learning": "Where to blur, where to sharpen",
+        "prompt": """Add EDGE VARIATION to the value study.
 
 {style_foundation}
 
-VERSION 4 - ATMOSPHERE:
-- Edges of hair/shoulders dissolve into background
-- Figure emerges from the gray atmosphere
-- Some facial edges can also dissolve
-- Only the focal area (eyes region) stays defined
-- Keep the rough, bold brushwork throughout
+VERSION 4 - EDGES:
+Using the same values, now vary the EDGES:
+- LOST edges: where form dissolves into background (hair edges, shadow sides)
+- SOFT edges: where forms turn gradually
+- FIRM edges: most edges, clear but not sharp
+- SHARP edges: only at focal point (usually near the eyes)
 
-The painting should feel unified - figure and ground are one.
-But still recognizable as the same person.
+Only 10-20% of edges should be sharp.
+50% or more can be lost or very soft.
 
-ABSOLUTELY NO:
-- Hard outline around the head
-- Figure that looks "pasted on" the background
-- Loss of the bold, rough quality
-- Photorealistic detail anywhere
+The figure should feel like it's emerging from atmosphere.
+Hair and shoulders dissolve. Eyes stay defined.
+
+This helps you see: Edge hierarchy creates focus and atmosphere.
 """,
-        "version_notes": "v1.1 - Simplified, maintains bold integration"
+        "version_notes": "v2.0 - Edge control for atmosphere"
     },
 
     5: {
-        "name": "Final",
-        "focus": "Emotional presence, completion",
-        "learning": "Knowing when to stop",
-        "prompt": """Final version - the person must be unmistakably recognizable.
+        "name": "Temperature",
+        "focus": "Warm lights, cool shadows",
+        "learning": "Color temperature in grays",
+        "prompt": """Add subtle COLOR TEMPERATURE to the study.
 
 {style_foundation}
 
-VERSION 5 - FINAL:
-- Someone who knows this person should instantly recognize them
-- The specific expression and emotion from the photo must be captured
-- The unique characteristics of their face must be clear
-- Keep the bold, painterly quality but ensure likeness
+VERSION 5 - TEMPERATURE:
+Still essentially monochromatic, but with temperature shifts:
+- WARM (slightly yellow/orange) in the lights
+- COOL (slightly blue/purple) in the shadows
 
-This is the painting reference you will work from.
-It must capture:
-1. The exact person (likeness)
-2. The exact moment (expression, pose)
-3. The painterly style (rough, bold strokes)
+This is very subtle - you should barely notice the color.
+It's still a "gray" painting but with life.
 
-Priority order: LIKENESS > EXPRESSION > STYLE
-If you have to choose, preserve the person's identity above all.
+Keep all the value work and edge work from before.
+Just add this subtle temperature variation.
+
+The person must be recognizable with their exact expression.
+
+This helps you see: How temperature adds life to values.
 """,
-        "version_notes": "v1.3 - Likeness as top priority"
+        "version_notes": "v2.0 - Temperature for final study"
     },
 }
 
